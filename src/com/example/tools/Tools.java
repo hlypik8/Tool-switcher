@@ -32,7 +32,7 @@ public class Tools {
 
     private void createAndShowGUI() {
         // Создаём главное окно
-        JFrame frame = new JFrame("Проверка цвета и имитация клика");
+        JFrame frame = new JFrame("Tool switcher");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setAlwaysOnTop(true); // окно всегда поверх остальных
 
@@ -111,12 +111,12 @@ public class Tools {
 
         // Добавляем основной контейнер в окно
         frame.getContentPane().add(mainPanel);
-        frame.setSize(450, 300);
+        frame.setSize(450, 450);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
         // Таймер Swing, который обновляет интерфейс каждые 100 мс
-        Timer timer = new Timer(100, new ActionListener() {
+        Timer timer = new Timer(150, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 update();
@@ -213,6 +213,9 @@ public class Tools {
      */
     private void performMouseClick(int x, int y) {
         robot.mouseMove(x, y);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.delay(50);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.delay(50);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
