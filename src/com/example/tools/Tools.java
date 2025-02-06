@@ -116,7 +116,7 @@ public class Tools {
         frame.setVisible(true);
 
         // Таймер Swing, который обновляет интерфейс каждые 100 мс
-        Timer timer = new Timer(150, new ActionListener() {
+        Timer timer = new Timer(140, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 update();
