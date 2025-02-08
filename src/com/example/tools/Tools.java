@@ -17,7 +17,6 @@ public class Tools {
     private JLabel mouseCoordsLabel;
     private JTextField checkXField, checkYField;
     private JTextField clickXField, clickYField;
-    private JTextField rField, gField, bField;
     private JButton startButton, stopButton;
 
     public Tools() {
@@ -34,7 +33,7 @@ public class Tools {
         // Создаём главное окно
         JFrame frame = new JFrame("Tool switcher");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setAlwaysOnTop(true); // окно всегда поверх остальных
+        frame.setAlwaysOnTop(true);
 
         // Создаём основной контейнер с вертикальным расположением компонентов
         JPanel mainPanel = new JPanel();
@@ -76,24 +75,6 @@ public class Tools {
         mainPanel.add(clickCoordsPanel);
         mainPanel.add(Box.createVerticalStrut(15));
 
-        // 4. Панель для ввода цветовых составляющих проверки
-        JPanel colorLabelPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        colorLabelPanel.add(new JLabel("Введите цвет проверки:"));
-        mainPanel.add(colorLabelPanel);
-
-        JPanel colorPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        colorPanel.add(new JLabel("R:"));
-        rField = new JTextField(5);
-        colorPanel.add(rField);
-        colorPanel.add(new JLabel("G:"));
-        gField = new JTextField(5);
-        colorPanel.add(gField);
-        colorPanel.add(new JLabel("B:"));
-        bField = new JTextField(5);
-        colorPanel.add(bField);
-        mainPanel.add(colorPanel);
-        mainPanel.add(Box.createVerticalStrut(15));
-
         // 5. Панель с кнопками управления
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         startButton = new JButton("start");
@@ -111,7 +92,7 @@ public class Tools {
 
         // Добавляем основной контейнер в окно
         frame.getContentPane().add(mainPanel);
-        frame.setSize(450, 450);
+        frame.setSize(450, 300);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
@@ -172,15 +153,8 @@ public class Tools {
                 startButton.setBackground(Color.GREEN);
                 return;
             }
-
-            Integer r = parseInt(rField.getText());
-            Integer g = parseInt(gField.getText());
-            Integer b = parseInt(bField.getText());
-            if (r == null || g == null || b == null) {
-                return;
-            }
             // Если цвет пикселя совпадает с заданным пользователем
-            if (pixelColor.getRed() == r && pixelColor.getGreen() == g && pixelColor.getBlue() == b) {
+            if (pixelColor.getRed() == 0 && pixelColor.getGreen() == 150 && pixelColor.getBlue() == 150) {
                 // Клик выполняется только один раз при появлении условия
                 if (!clicked) {
                     Integer clickX = parseInt(clickXField.getText());
