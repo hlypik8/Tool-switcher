@@ -97,7 +97,7 @@ public class Tools {
         frame.setVisible(true);
 
         // Таймер Swing, который обновляет интерфейс каждые 100 мс
-        Timer timer = new Timer(140, new ActionListener() {
+        Timer timer = new Timer(150, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 update();
@@ -147,7 +147,8 @@ public class Tools {
             Color pixelColor = robot.getPixelColor(checkX, checkY);
 
             // Если цвет белый (255,255,255), автоматически останавливаем программу
-            if (pixelColor.getRed() == 255 && pixelColor.getGreen() == 255 && pixelColor.getBlue() == 255) {
+            if ((pixelColor.getRed() == 255 && pixelColor.getGreen() == 255 && pixelColor.getBlue() == 255)
+                    || (pixelColor.getRed() == 160 && pixelColor.getGreen() == 0 && pixelColor.getBlue() == 0)) {
                 running = false;
                 stopButton.setBackground(Color.GRAY);
                 startButton.setBackground(Color.GREEN);
